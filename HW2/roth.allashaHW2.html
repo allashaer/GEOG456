@@ -45,6 +45,7 @@ position: relative}
         
 
     }
+   
 </style>
 
  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -53,11 +54,11 @@ position: relative}
 
 <body>
     <div id="daRedBox"></div>
-   <h1>El Jardín Etnobotánico de Oaxaca</h1>
+   <h1>¿Dónde está uno de los mejores jardines en el mundo?</h1>
  <div id="map"></div>  
      <div id="border"></div>
      <script>
-        var map = L.map('map').setView([17.065, -96.722], 14);
+        var map = L.map('map').setView([17.067, -96.722], 14);
          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -68,7 +69,7 @@ position: relative}
         iconSize: [50,60], // size of the icon
         popupAnchor: [0,0] // where the icon is located relative to the lat lon of the point. 
         });
-        var customPopup = "Uno de mis jardines favoritos<br/><img src='https://allasha.com/wp-content/uploads/2026/01/IMG_2037.jpg' width='300px'Uno de mis jardines favoritos/>";
+        var customPopup = "Aquí en El Jardín Etnobiológico de Oaxaca<br/><img src='https://allasha.com/wp-content/uploads/2026/01/IMG_2037.jpg' width='300px'Uno de mis jardines favoritos/>";
          L.geoJSON(garden, {   // a
     pointToLayer: function (feature, latlng) { // b
     return L.marker(latlng, {icon: cactusIcon});}}) // c
