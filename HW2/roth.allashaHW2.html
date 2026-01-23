@@ -12,29 +12,32 @@
 </head>
 
 <style>
-    #map { height: 550px;
-        width: 550px;
+    #map { height: 500px;
+        width: 500px;
      background-color: pink;
     margin: auto;
-position: relative}
+position: relative;
+border: 1px;
+outline: 10px;
+outline-style: groove;
+outline-color: darkseagreen;
+}
 
     body{
-        background-color: plum
+        background-color: lavender
         ;
     }
 
     h1 {
         text-align: center;
-        position: relative
+        position: relative;
+        color: darkslategray;
+          text-shadow: 1px 1px 2px darkseagreen
+  
+       
     }
 
-    .border {
-        background-color: darkseagreen;
-        height: 700px;
-        width: 700px;
-        
-    }
-        #daRedBox {
+        /* #daRedBox {
         background-color: darkseagreen;
         position: absolute;
         width: 600px;
@@ -44,7 +47,7 @@ position: relative}
         top: 10%
         
 
-    }
+    } */
    
 </style>
 
@@ -58,7 +61,7 @@ position: relative}
  <div id="map"></div>  
      <div id="border"></div>
      <script>
-        var map = L.map('map').setView([17.067, -96.722], 14);
+        var map = L.map('map').setView([17.067, -96.723], 14);
          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -66,10 +69,10 @@ position: relative}
  var cactusIcon = L.icon({    // notice the L.icon which is a Leaflet object with properties
         iconUrl: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapers.com%2Fimages%2Fhd%2Fprickly-pear-cactus-png-37-jxf0sgn3l886vdkm.png&f=1&nofb=1&ipt=372dbbc326d9f46aaadb803b06a664656c3c3168512265bfd2341018b936eed8',   
           // this points to a jpg image obtained from the internet
-        iconSize: [50,60], // size of the icon
-        popupAnchor: [0,0] // where the icon is located relative to the lat lon of the point. 
+        iconSize: [60,70], // size of the icon
+        popupAnchor: [1,0] // where the icon is located relative to the lat lon of the point. 
         });
-        var customPopup = "Aquí en El Jardín Etnobiológico de Oaxaca<br/><img src='https://allasha.com/wp-content/uploads/2026/01/IMG_2037.jpg' width='300px'Uno de mis jardines favoritos/>";
+        var customPopup = "Aquí en El Jardín Etnobiológico de Oaxaca<br/><img src='https://allasha.com/wp-content/uploads/2026/01/IMG_2037.jpg' width='280px'Uno de mis jardines favoritos/>";
          L.geoJSON(garden, {   // a
     pointToLayer: function (feature, latlng) { // b
     return L.marker(latlng, {icon: cactusIcon});}}) // c
