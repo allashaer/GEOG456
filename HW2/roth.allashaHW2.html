@@ -16,8 +16,6 @@
         width: 550px;
      background-color: pink;
     margin: auto;
-border: 10px darkseagreen;
-padding: 10px;
 position: relative}
 
     body{
@@ -70,7 +68,7 @@ position: relative}
         iconSize: [50,60], // size of the icon
         popupAnchor: [0,0] // where the icon is located relative to the lat lon of the point. 
         });
-        var customPopup = "Uno de mis jardines favoritos<br/><img src='https://allasha.com/wp-content/uploads/2026/01/IMG_2037.jpg' width='300px'/>";
+        var customPopup = "Uno de mis jardines favoritos<br/><img src='https://allasha.com/wp-content/uploads/2026/01/IMG_2037.jpg' width='300px'Uno de mis jardines favoritos/>";
          L.geoJSON(garden, {   // a
     pointToLayer: function (feature, latlng) { // b
     return L.marker(latlng, {icon: cactusIcon});}}) // c
