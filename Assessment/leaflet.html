@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Assessment 2</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+        <script src="./data/hurricane.js" ></script>
+    </head>
+    <body>
+   <h1>Hurricane Allata</h1>
+    <div id="mapid"></div>
+    
+    <style>
+        #mapid{ width: 900px; height: 500px; position: center;}
+        body{
+        background-color: lavender
+        ;
+    }
+    
+    h1 {
+        text-align: center;
+       
+        color: darkslategray;
+        
+  
+     
+    }
+
+    </style>
+    <script>  
+
+
+    var map = L.map('mapid').setView([15.91, -114.05], 5.5); // YOU CAN CHANGE THE ZOOM
+
+    // this line is creating the variable map by  initializing the L.map class (a Leaflet class) with the mapid element that we created before. setView is a method that can be applied to the class L.map : you can give it a latitude, longitude and a zoom.  The higher the value of the zoom, the finer the initial scale of the map. 
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles courtesy of <a href="https://www.openstreetmap.cat" target="_blank">Breton OpenStreetMap Team</a> contributors'
+        }).addTo(map);
+
+ 
+
+    
+    // create custom icon variable
+    
+        var hurricaneIcon = L.icon({    // notice the L.icon which is a Leaflet object with properties
+        iconUrl: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngplay.com%2Fwp-content%2Fuploads%2F1%2FHurricane-PNG-Transparent-Background.png&f=1&nofb=1&ipt=34f6f8900dc0983241be22dcf757905b0575af2ec4ad65fb4287e8a049536704',   
+          // this points to a jpg image obtained from the internet
+        iconSize: [40,40], // size of the icon
+        popupAnchor: [0,0] // where the icon is located relative to the lat lon of the point. 
+        });
+    
+
+        var customPopup = "Hurricane Allata<br/><img src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.tripsavvy.com%2Fthmb%2FsqgtI1vX_xgfBwwbFzSsak5OP2c%3D%2F3612x2761%2Ffilters%3Afill(auto%2C1)%2Fhurricane-elena-in-the-gulf-of-mexico-AB001599-577cfc775f9b585875ad448e.jpg&f=1&nofb=1&ipt=114c42b05d1ebba32ffea7ebfff9264b129ea14427255d6733bdd8783946810d' width='100px'/>";
+
+
+    L.geoJSON(storm, {   // a
+    pointToLayer: function (feature, latlng) { // b
+    return L.marker(latlng, {icon: hurricaneIcon});}}) // c
+    .bindPopup(customPopup) // d
+    .addTo(map); // 
+    
+    // end of script
+    </script>
+    </body>
+</html>
