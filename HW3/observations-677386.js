@@ -23,7 +23,7 @@ var fowl = {
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ -78.8817859814,35.8556113942 ]
+       "coordinates":  [ -78.8817859814,35.8556113943 ]
     },
     "properties": {
     "id":333063250,
@@ -39,7 +39,7 @@ var fowl = {
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ -78.8817859814,35.8556113942 ]
+       "coordinates":  [ -78.8817859814,35.8556113941 ]
     },
     "properties": {
     "id":333072703,
@@ -55,7 +55,7 @@ var fowl = {
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ -78.8817859814,35.8556113942 ]
+       "coordinates":  [ -78.8817859813,35.8556113942 ]
     },
     "properties": {
     "id":333072991,
@@ -71,7 +71,7 @@ var fowl = {
     "type": "Feature",
     "geometry": {
        "type": "Point",
-       "coordinates":  [ -78.8817859814,35.8556113942 ]
+       "coordinates":  [ -78.8817859815,35.8556113942 ]
     },
     "properties": {
     "id":333073499,
