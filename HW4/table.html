@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+/* style and html from https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table_intro */
+table {
+  font-family: Tahoma, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 8px; 
+  overflow: hidden; 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+body{
+    background-color: lavender;
+}
+td, th {
+  border: 1px solid lavenderblush;
+  text-align: left;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: seashell;
+}
+
+.high {
+  background-color: lightgoldenrodyellow;
+}
+.low {
+  background-color: seashell;
+}
+</style>
+</head>
+<script src="./data.js"></script>
+<body>
+
+<h2 style="font-family: 'Verdana', sans-serif; color: indianred;" >Year</h2>
+<h4 style="font-family: 'Verdana', sans-serif; color: palevioletred;">Number of Eggs Hatched</h4>
+
+<table id="mytable">
+  <tr>
+    <th>Year</th>
+    <th>Number of Eggs Hatched</th>
+  </tr>
+  
+</table>
+</script>
+
+<script>
+  var x = document.getElementById('mytable')
+  var length = data.features.length  
+  for (var i =0; i <length; i++){
+    var myNewRow = document.createElement('tr');
+    var myNewCell1 = document.createElement('td');
+    var myNewCell2 = document.createElement('td');
+
+    myNewCell1.innerHTML = data.features[i].properties.year;
+    myNewCell2.innerHTML = data.features[i].properties.number_eggs_hatched;
+
+  myNewCell2.className = getClassName(data.features[i].properties.number_eggs_hatched);
+    
+    myNewRow.append(myNewCell1);
+    myNewRow.append(myNewCell2);
+
+    
+    x.append(myNewRow);
+
+
+
+  } 
+ 
+
+
+function getBackgroundColor(d){
+  return d > 0 ? 'pink' : 'gray';
+}
+
+function getClassName(d){
+  return d > 0 ? 'high' : 'low';
+}
+ 
+</script>
+
+</body>
+
+
+</html>
+
+
