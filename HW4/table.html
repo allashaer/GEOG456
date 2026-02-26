@@ -17,32 +17,41 @@ body{
     background-color: lavender;
 }
 td, th {
-  border: 1px solid lavenderblush;
+    background-color: #e0fbdd;
+  border: 2px solid #fffdf0;
   text-align: left;
   padding: 10px;
 }
 
 tr:nth-child(even) {
-  background-color: seashell;
+  background-color: lavenderblush;
 }
 
 .high {
   background-color: lightgoldenrodyellow;
 }
 .low {
-  background-color: seashell;
+  background-color: #fffdf0;
+}
+h2{
+    text-align: center;
+    color: indianred
+}
+h4 {
+    text-align: center;
 }
 </style>
 </head>
 <script src="./data.js"></script>
 <body>
 
-<h2 style="font-family: 'Verdana', sans-serif; color: indianred;" >Year</h2>
-<h4 style="font-family: 'Verdana', sans-serif; color: palevioletred;">Number of Eggs Hatched</h4>
+<h2>Number of Eggs Hatched per Nest</h2>
+<h4>Utqiaġvik shorebird breeding ecology study, Utqiaġvik, Alaska, 2003-2018</h4>
 
 <table id="mytable">
   <tr>
     <th>Year</th>
+    <th>Number of Eggs Found in Nest</th>
     <th>Number of Eggs Hatched</th>
   </tr>
   
@@ -56,14 +65,18 @@ tr:nth-child(even) {
     var myNewRow = document.createElement('tr');
     var myNewCell1 = document.createElement('td');
     var myNewCell2 = document.createElement('td');
+    var myNewCell3 = document.createElement('td');
 
     myNewCell1.innerHTML = data.features[i].properties.year;
-    myNewCell2.innerHTML = data.features[i].properties.number_eggs_hatched;
+    myNewCell2.innerHTML = data.features[i].properties.number_egg_find;
+    myNewCell3.innerHTML = data.features[i].properties.number_eggs_hatched;
+   
 
-  myNewCell2.className = getClassName(data.features[i].properties.number_eggs_hatched);
+  myNewCell3.className = getClassName(data.features[i].properties.number_eggs_hatched);
     
     myNewRow.append(myNewCell1);
     myNewRow.append(myNewCell2);
+    myNewRow.append(myNewCell3);
 
     
     x.append(myNewRow);
