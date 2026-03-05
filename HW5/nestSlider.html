@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nest Slider</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+    <script src="./data.js"></script>
+   
+</head>
+    <style>
+        #map {
+            width: 75%;
+            height: 550px;
+
+        }
+        body { background-color: lavenderblush;
+
+        }
+    </style>
+    
+<body>
+</br>
+
+<h3 id="theYearID">Year</h3>
+<input id="myRange" type="range" name="year" value="0" min="0" max="2" oninput="moveSlider(this.value)">
+<br>
+Nests with 4 eggs hatched
+    <div id="map"></div>
+
+<script>
+
+
+const first = [];
+const second = [];
+const third = [];
+const initialLength =  data.features.length; 
+ 
+for (let i = 0; i < initialLength; i++) { 
+  if (data.features[i].properties.year == 2016 && data.features[i].properties.number_eggs_hatched == 4) first.push(data.features[i]); // Add a new element
+  else if (data.features[i].properties.year == 2017 && data.features[i].properties.number_eggs_hatched == 4) second.push(data.features[i]);
+};
+  
+for (let i = 0; i < initialLength; i++) { 
+    if (data.features[i].properties.year == 2018 && data.features[i].properties.number_eggs_hatched == 4) third.push(data.features[i])
+};
+
+    
+ 
+    var map = L.map('map').setView([71.275, -156.6], 11.4);
+        
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    }).addTo(map);
+
+
+var nestIcon = L.icon({
+    iconUrl: 'birb.png',
+  
+
+    iconSize:     [38, 48], // size of the icon
+  
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+   
+});
+
+
+     var myData = [first, second, third] // array ordering the data 
+     var order = ['2016','2017','2018'] // an array with the date of each data source
+     var points = L.geoJSON(myData[0],{
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng, {icon: nestIcon})
+            }
+        }).addTo(map); // open the first element of the myData array
+
+    function moveSlider(value){  // function called by the slider, with the value parameter: the value goes from 0 to 2
+        var year = myData[value] // get the data based on the slider value
+        map.removeLayer(points);// leaflet method to remove a layer 
+        // point = L.geoJSON(year, {icon: nestIcon});
+        points = L.geoJSON(year);
+        map.addLayer(points); // add the new layer
+        document.getElementById('theYearID').innerHTML = order[value] // change the text above the slider
+    } moveSlider(0)
+    window.onload = function() {
+        document.getElementById('dateSlider').value = 0;  
+    };
+   
+
+
+</script>
+</body>
+</html>
