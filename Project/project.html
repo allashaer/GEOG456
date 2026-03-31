@@ -56,20 +56,29 @@ for (let i = 0; i < initialLength; i++) {
 };
   
 for (let i = 0; i < initialLength; i++) { 
-    if (wisteria.features[i].properties.observed_on == 2017) third.push(wisteria.features[i]) 
+    if (wisteria.features[i].properties.observed_on == 2017) third.push(wisteria.features[i]) ;
+    else if (wisteria.features[i].properties.observed_on == 2018) fourth.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2019) fifth.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2020) sixth.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2021) seventh.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2022) eigth.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2023) ninth.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2024) tenth.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2025) eleventh.push(wisteria.features[i]);
+
 };
 
 
- function whichYear(date) {
-    return (wisteria.features[i].properties.observed_on == 2018) ? fourth.push(wisteria.features[i]):
-    (wisteria.features[i].properties.observed_on == 2019) ? fifth.push(wisteria.features[i]):
-    (wisteria.features[i].properties.observed_on == 2020) ? sixth.push(wisteria.features[i]):
-    (wisteria.features[i].properties.observed_on == 2021) ? seventh.push(wisteria.features[i]):
-    (wisteria.features[i].properties.observed_on == 2022) ? eigth.push(wisteria.features[i]):
-    (wisteria.features[i].properties.observed_on == 2023) ? ninth.push(wisteria.features[i]):
-     (wisteria.features[i].properties.observed_on == 2024) ? tenth.push(wisteria.features[i]):
-      eleventh.push(wisteria.features[i])
-};  
+//  function whichYear(date) {
+//     return (wisteria.features[i].properties.observed_on == 2018) ? fourth.push(wisteria.features[i]):
+//     (wisteria.features[i].properties.observed_on == 2019) ? fifth.push(wisteria.features[i]):
+//     (wisteria.features[i].properties.observed_on == 2020) ? sixth.push(wisteria.features[i]):
+//     (wisteria.features[i].properties.observed_on == 2021) ? seventh.push(wisteria.features[i]):
+//     (wisteria.features[i].properties.observed_on == 2022) ? eigth.push(wisteria.features[i]):
+//     (wisteria.features[i].properties.observed_on == 2023) ? ninth.push(wisteria.features[i]):
+//      (wisteria.features[i].properties.observed_on == 2024) ? tenth.push(wisteria.features[i]):
+//       eleventh.push(wisteria.features[i])
+// };  
 
     var map = L.map('map').setView([35.95, -78.9],7 );
         
