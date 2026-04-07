@@ -23,8 +23,8 @@
 
         }
 
-    #button {
-  background-color: lavender;
+        #button {
+            background-color: lavender;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -34,21 +34,19 @@
   font-size: 16px;
   cursor:pointer;
   border-radius: 12px;
-}
-        
+        }
     </style>
 
 <body>
 
-<h2>All Wisteria sinens Observations</h2>
+   
+
+<h2>Wisteria Sinens Observations (Needs ID)</h2>
 <h2 id="theYearID"></h2>
 <input id="myRange" type="range" name="year" value="0" min="0" max="10" oninput="moveSlider(this.value)">
-</br>
+ </br>
+<h4 id="button"> <a href="./project1.html">Show All Wisteria sinens Observations</a> </h4>
 <h4 id="button"> <a href="./project2.html">Show Verified Observations (Research Grade)</a> </h4>
-<h4 id="button"> <a href="./project1.html">Show Unverified Observations (Needs ID)</a> </h4>
-
-
-
 
 <br>
      <div id="map"></div>
@@ -72,20 +70,17 @@ const initialLength =  wisteria.features.length;
 
  
 for (let i = 0; i < initialLength; i++) { 
-  if (wisteria.features[i].properties.observed_on == 2015) first.push(wisteria.features[i]); // Add a new element
-  else if (wisteria.features[i].properties.observed_on == 2016) second.push(wisteria.features[i]);
-};
-  
-for (let i = 0; i < initialLength; i++) { 
-    if (wisteria.features[i].properties.observed_on == 2017) third.push(wisteria.features[i]) ;
-    else if (wisteria.features[i].properties.observed_on == 2018) fourth.push(wisteria.features[i]);
-    else if (wisteria.features[i].properties.observed_on == 2019) fifth.push(wisteria.features[i]);
-    else if (wisteria.features[i].properties.observed_on == 2020) sixth.push(wisteria.features[i]);
-    else if (wisteria.features[i].properties.observed_on == 2021) seventh.push(wisteria.features[i]);
-    else if (wisteria.features[i].properties.observed_on == 2022) eigth.push(wisteria.features[i]);
-    else if (wisteria.features[i].properties.observed_on == 2023) ninth.push(wisteria.features[i]);
-    else if (wisteria.features[i].properties.observed_on == 2024) tenth.push(wisteria.features[i]);
-    else if (wisteria.features[i].properties.observed_on == 2025) eleventh.push(wisteria.features[i]);
+  if (wisteria.features[i].properties.observed_on == 2015 && wisteria.features[i].properties.quality_grade == "needs_id") first.push(wisteria.features[i]); // Add a new element
+  else if (wisteria.features[i].properties.observed_on == 2016 && wisteria.features[i].properties.quality_grade == "needs_id") second.push(wisteria.features[i]);
+  else if (wisteria.features[i].properties.observed_on == 2017 && wisteria.features[i].properties.quality_grade == "needs_id") third.push(wisteria.features[i]) ;
+    else if (wisteria.features[i].properties.observed_on == 2018 && wisteria.features[i].properties.quality_grade == "needs_id") fourth.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2019 && wisteria.features[i].properties.quality_grade == "needs_id") fifth.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2020 && wisteria.features[i].properties.quality_grade == "needs_id") sixth.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2021 && wisteria.features[i].properties.quality_grade == "needs_id") seventh.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2022 && wisteria.features[i].properties.quality_grade == "needs_id") eigth.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2023 && wisteria.features[i].properties.quality_grade == "needs_id") ninth.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2024 && wisteria.features[i].properties.quality_grade == "needs_id") tenth.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2025 && wisteria.features[i].properties.quality_grade == "needs_id") eleventh.push(wisteria.features[i]);
 
 };
 
@@ -98,7 +93,7 @@ for (let i = 0; i < initialLength; i++) {
 
 
 var Icon_w = L.icon({
-    iconUrl: './icons/wister.svg',
+    iconUrl: './icons/wisteria.svg',
   
 
     iconSize:     [38, 48], // size of the icon

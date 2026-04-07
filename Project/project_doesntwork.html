@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+    <script src="./data/wisteria.js"></script>
+</head>
+
+ <style>
+        #map {
+            width: 75%;
+            height: 550px;
+
+        }
+        body { background-color: lavenderblush;
+
+        }
+    </style>
+
+<body>
+    </br>
+
+<h3 id="theYearID">Year</h3>
+<input id="myRange" type="range" name="year" value="0" min="0" max="10" oninput="moveSlider(this.value)">
+<br>
+     <div id="map"></div>
+
+     <script>
+
+// Create arrays for each year of wisteria data
+const first_w_n = [];
+const second_w_n = [];
+const third_w_n = [];
+const fourth_w_n = [];
+const fifth_w_n = [];
+const sixth_w_n = [];
+const seventh_w_n = [];
+const eigth_w_n = [];
+const ninth_w_n = [];
+const tenth_w_n = [];
+const eleventh_w_n = [];
+const initialLength =  wisteria.features.length; 
+
+// Create arrays for each year of wisteria research grade data
+const first_w_r = [];
+const second_w_r = [];
+const third_w_r = [];
+const fourth_w_r = [];
+const fifth_w_r = [];
+const sixth_w_r = [];
+const seventh_w_r = [];
+const eigth_w_r = [];
+const ninth_w_r = [];
+const tenth_w_r = [];
+const eleventh_w_r = [];
+ 
+
+// Populate arrays with data
+for (let i = 0; i < initialLength; i++) { 
+  if (wisteria.features[i].properties.observed_on == 2015 && wisteria.features[i].properties.quality_grade == "needs_id") first_w_n.push(wisteria.features[i]); // Add a new element
+  else if (wisteria.features[i].properties.observed_on == 2016 && wisteria.features[i].properties.quality_grade == "needs_id") second_w_n.push(wisteria.features[i]);
+  else if (wisteria.features[i].properties.observed_on == 2017 && wisteria.features[i].properties.quality_grade == "needs_id") third_w_n.push(wisteria.features[i]) ;
+    else if (wisteria.features[i].properties.observed_on == 2018 && wisteria.features[i].properties.quality_grade == "needs_id") fourth_w_n.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2019 && wisteria.features[i].properties.quality_grade == "needs_id") fifth_w_n.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2020 && wisteria.features[i].properties.quality_grade == "needs_id") sixth_w_n.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2021 && wisteria.features[i].properties.quality_grade == "needs_id") seventh_w_n.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2022 && wisteria.features[i].properties.quality_grade == "needs_id") eigth_w_n.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2023 && wisteria.features[i].properties.quality_grade == "needs_id") ninth_w_n.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2024 && wisteria.features[i].properties.quality_grade == "needs_id") tenth_w_n.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2025 && wisteria.features[i].properties.quality_grade == "needs_id") eleventh_w_n.push(wisteria.features[i]);
+
+};
+// Populate arrays with research grade data
+for (let i = 0; i < initialLength; i++) { 
+  if (wisteria.features[i].properties.observed_on == 2015 && wisteria.features[i].properties.quality_grade == "research") first_w_r.push(wisteria.features[i]); // Add a new element
+  else if (wisteria.features[i].properties.observed_on == 2016 && wisteria.features[i].properties.quality_grade == "research") second_w_r.push(wisteria.features[i]);
+  else if (wisteria.features[i].properties.observed_on == 2017 && wisteria.features[i].properties.quality_grade == "research") third_w_r.push(wisteria.features[i]) ;
+    else if (wisteria.features[i].properties.observed_on == 2018 && wisteria.features[i].properties.quality_grade == "research") fourth_w_r.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2019 && wisteria.features[i].properties.quality_grade == "research") fifth_w_r.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2020 && wisteria.features[i].properties.quality_grade == "research") sixth_w_r.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2021 && wisteria.features[i].properties.quality_grade == "research") seventh_w_r.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2022 && wisteria.features[i].properties.quality_grade == "research") eigth_w_r.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2023 && wisteria.features[i].properties.quality_grade == "research") ninth_w_r.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2024 && wisteria.features[i].properties.quality_grade == "research") tenth_w_r.push(wisteria.features[i]);
+    else if (wisteria.features[i].properties.observed_on == 2025 && wisteria.features[i].properties.quality_grade == "research") eleventh_w_r.push(wisteria.features[i]);
+
+};
+
+// Create wisteria map
+ var map_w_n = L.map('map').setView([35.95, -78.9],7 );
+        
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+}).addTo(map_w_n);
+
+// Create wisteria research grade map
+ var map_w_r = L.map('map').setView([35.95, -78.9],7 );
+        
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+}).addTo(map_w_r);
+
+// Add custom icon
+var Icon_w = L.icon({
+    iconUrl: './icons/wisteria.svg',
+  
+
+    iconSize:     [38, 48], // size of the icon
+  
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+   
+});
+
+// Order data for wisteria slider
+     var Data_w_n = [first_w_n, second_w_n, third_w_n, fourth_w_n, fifth_w_n, sixth_w_n, seventh_w_n, eigth_w_n, ninth_w_n, tenth_w_n, eleventh_w_n]; // array ordering the data 
+     var order = ['2015','2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']; // an array with the date of each data source
+     var points_w_n = L.geoJSON(Data_w_n[0],{
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng, {icon:Icon_w})
+            }
+        }).addTo(map_w_n); // open the first element of the data array
+function moveSlider(value){  // function called by the slider, with the value parameter: the value goes from 0 to 2
+        var year_w_n = Data_w_n[value] // get the data based on the slider value
+        map_w_n.removeLayer(points_w_n);// leaflet method to remove a layer 
+
+        // Custom icon isn't working, not sure why...
+        points_w_n = L.geoJSON(year_w_n, {icon:Icon_w});
+
+        map_w_n.addLayer(points_w_n); // add the new layer
+        document.getElementById('theYearID').innerHTML = order[value] // change the text above the slider
+    } moveSlider(0)
+
+// Order data for wisteria research grade slider
+     var Data_w_r = [first_w_r, second_w_r, third_w_r, fourth_w_r, fifth_w_r, sixth_w_r, seventh_w_r, eigth_w_r, ninth_w_r, tenth_w_r, eleventh_w_r]; // array ordering the data 
+     var order = ['2015','2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025']; // an array with the date of each data source
+     var points_w_r = L.geoJSON(Data_w_r[0],{
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng, {icon:Icon_w})
+            }
+        }).addTo(map_w_r); // open the first element of the data array
+    function moveSlider(value){  // function called by the slider, with the value parameter: the value goes from 0 to 2
+        var year_w_r = Data_w_r[value] // get the data based on the slider value
+        map_w_r.removeLayer(points_w_r);// leaflet method to remove a layer 
+
+        // Custom icon isn't working, not sure why...
+        points_w_r = L.geoJSON(year_w_r, {icon:Icon_w});
+
+        map_w_r.addLayer(points_w_r); // add the new layer
+        document.getElementById('theYearID').innerHTML = order[value] // change the text above the slider
+    } moveSlider(0)
+    window.onload = function() {
+        document.getElementById('dateSlider').value = 0;  
+    };
+   
+
+
+</script>
+</body>
+</html>
