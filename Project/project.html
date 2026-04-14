@@ -73,19 +73,16 @@ const initialLength =  wisteria.features.length;
  
 for (let i = 0; i < initialLength; i++) { 
   if (wisteria.features[i].properties.observed_on == 2015) first.push(wisteria.features[i]); // Add a new element
-  else if (wisteria.features[i].properties.observed_on == 2016) second.push(wisteria.features[i]);
-};
-  
-for (let i = 0; i < initialLength; i++) { 
-    if (wisteria.features[i].properties.observed_on == 2017) third.push(wisteria.features[i]) ;
-    else if (wisteria.features[i].properties.observed_on == 2018) fourth.push(wisteria.features[i]);
-    else if (wisteria.features[i].properties.observed_on == 2019) fifth.push(wisteria.features[i]);
-    else if (wisteria.features[i].properties.observed_on == 2020) sixth.push(wisteria.features[i]);
-    else if (wisteria.features[i].properties.observed_on == 2021) seventh.push(wisteria.features[i]);
-    else if (wisteria.features[i].properties.observed_on == 2022) eigth.push(wisteria.features[i]);
-    else if (wisteria.features[i].properties.observed_on == 2023) ninth.push(wisteria.features[i]);
-    else if (wisteria.features[i].properties.observed_on == 2024) tenth.push(wisteria.features[i]);
-    else if (wisteria.features[i].properties.observed_on == 2025) eleventh.push(wisteria.features[i]);
+  if (wisteria.features[i].properties.observed_on <= 2016) second.push(wisteria.features[i]);
+  if (wisteria.features[i].properties.observed_on <= 2017) third.push(wisteria.features[i]) ;
+    if (wisteria.features[i].properties.observed_on <= 2018) fourth.push(wisteria.features[i]);
+     if (wisteria.features[i].properties.observed_on <= 2019) fifth.push(wisteria.features[i]);
+    if (wisteria.features[i].properties.observed_on <= 2020) sixth.push(wisteria.features[i]);
+     if (wisteria.features[i].properties.observed_on <= 2021) seventh.push(wisteria.features[i]);
+    if (wisteria.features[i].properties.observed_on <= 2022) eigth.push(wisteria.features[i]);
+    if (wisteria.features[i].properties.observed_on <= 2023) ninth.push(wisteria.features[i]);
+     if (wisteria.features[i].properties.observed_on <= 2024) tenth.push(wisteria.features[i]);
+   if (wisteria.features[i].properties.observed_on <= 2025) eleventh.push(wisteria.features[i]);
 
 };
 
@@ -98,12 +95,12 @@ for (let i = 0; i < initialLength; i++) {
 
 
 var Icon_w = L.icon({
-    iconUrl: './icons/wister.svg',
+    iconUrl: './icons/wisteria.png',
   
 
-    iconSize:     [38, 48], // size of the icon
+    iconSize:     [20, 20], // size of the icon
   
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    iconAnchor:   [10, 10], // point of the icon which will correspond to marker's location
    
 });
 
@@ -111,8 +108,11 @@ var Icon_w = L.icon({
      var myData = [first, second, third, fourth, fifth, sixth, seventh, eigth, ninth, tenth, eleventh] // array ordering the data 
      var order = ['2015','2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'] // an array with the date of each data source
      var points = L.geoJSON(myData[0],{
-            pointToLayer: function(feature,latlng){
-                return L.marker(latlng, {icon: Icon_w})
+            pointToLayer: function(feature, latlng) {
+                var myMarker = L.marker(latlng, {
+                    icon : Icon_w
+                });
+                return myMarker;
             }
         }).addTo(map); // open the first element of the myData array
 
@@ -120,8 +120,14 @@ var Icon_w = L.icon({
         var year = myData[value] // get the data based on the slider value
         map.removeLayer(points);// leaflet method to remove a layer 
         // custom icon doesn't work...
-        points = L.geoJSON(year, {icon: Icon_w});
-        map.addLayer(points); // add the new layer
+        points = L.geoJSON(year, {
+            pointToLayer: function(feature, latlng) {
+                var myMarker = L.marker(latlng, {
+                    icon : Icon_w
+                });
+                return myMarker;
+            }
+        }).addTo(map); // add the new layer
         document.getElementById('theYearID').innerHTML = order[value] // change the text above the slider
     } moveSlider(0)
     window.onload = function() {
