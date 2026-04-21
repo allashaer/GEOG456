@@ -121,7 +121,7 @@ width: 50px;
 
 
 
-<div id="home" class="button"><a href="./homePage.html"><img class= "icon" src="./icons/home.png"></a>Return</div><div id="research" class="button"> <a href="./pear1.html"><img class="icon" src="./icons/need.png"></a></br>Show Unverified Observations</div>
+<a href="./homePage.html"><div id="home" class="button"><img class= "icon" src="./icons/home.png">Return</div></a><a href="./pear1.html"><div id="research" class="button"> <img class="icon" src="./icons/need.png"></br>Show Unverified Observations</div></a>
 <h1 class="head">Bradford Pear</h1> 
 <h3>Pyrus calleryana</h3>
 The Bradford Pear, also referred to as the Callery Pear, is ranked as a severe threat, meaning it is an exotic plant that has invasive characteristics and spreads readily into NC plant communities, displacing native vegetation.
@@ -180,7 +180,9 @@ for (let i = 0; i < initialLength; i++) {
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 }).addTo(map);
 
-
+L.geoJSON(nc,{
+color:'lavender'})
+.addTo(map);
 
 var Icon_w = L.icon({
     iconUrl: './icons/pear.png',

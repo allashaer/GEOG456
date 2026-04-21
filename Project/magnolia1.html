@@ -11,6 +11,7 @@
     integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
     crossorigin=""></script>
     <script src="./data/magnolia.js"></script>
+        <script src="./data/NC_layer.js"></script>
 
  <style>
         #map {
@@ -177,6 +178,9 @@ if (magnolia.features[i].properties.observed_on <= 2016 && magnolia.features[i].
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 }).addTo(map);
 
+L.geoJSON(nc,{
+color:'lavender'})
+.addTo(map);
 
 var Icon_w = L.icon({
     iconUrl: './icons/magnolia.png',

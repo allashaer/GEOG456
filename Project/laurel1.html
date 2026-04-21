@@ -11,6 +11,7 @@
     integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
     crossorigin=""></script>
     <script src="./data/laurel.js"></script>
+        <script src="./data/NC_layer.js"></script>
 
  <style>
         #map {
@@ -117,7 +118,7 @@ width: 50px;
    
 
 
-<div id="home" class="button"><a href="./homePage.html"><img class= "icon" src="./icons/home.png"></a>Return</div><div id="research" class="button"> <a href="./laurel2.html"><img class="icon" src="./icons/research.png"></a></br>Show Verified Observations</div>
+<a href="./homePage.html"><div id="home" class="button"><img class= "icon" src="./icons/home.png">Return</div></a><a href="./laurel2.html"><div id="research" class="button"> <img class="icon" src="./icons/research.png"></br>Show Verified Observations</div></a>
 <h1 class="head">Mountain laurel</h1> 
 <h2>"Description"</h2>
 <h2 class="type">Observation Type: Needs ID</h2>
@@ -171,7 +172,9 @@ if (laurel.features[i].properties.observed_on <= 2016 && laurel.features[i].prop
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 }).addTo(map);
-
+L.geoJSON(nc,{
+color:'lavender'})
+.addTo(map);
 
 var Icon_w = L.icon({
     iconUrl: './icons/laurel.png',
