@@ -1,4 +1,4 @@
-{
+nc = {
 "type": "FeatureCollection",
 "name": "NC_layer",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4269" } },
