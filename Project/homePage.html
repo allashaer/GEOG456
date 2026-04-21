@@ -38,12 +38,11 @@ h3{
 }
 
 
-span, img{
-    margin:10px;
-}
-img {
+
+.icon {
     width: 50px;
     height: 50px;
+     margin:10px;
 }
 #buttons{
    border-spacing: 10px;
@@ -51,39 +50,54 @@ img {
   margin-right: auto;
 
 }
-th, td {
+th{
+    text-decoration-line: underline;
+
+}
+td {
   padding-top: 10px;
   padding-bottom: 20px;
 
 }
-
-
+#pic{
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+#pic2{
+      background-image: url(./icons/leaves.png);
+  background-position: left top;
+  background-repeat: no-repeat;
+}
 </style>
 </head>
 <body>
-    <h1> iNaturalist Observation Patterns in NC: Using Citizen Science for Conservation</h1>
-    <h2> "What is this project?"</h2>
+    
+   <h1> iNaturalist Observation Patterns in NC: Using Citizen Science for Conservation</h1>
+   <h2> "What is this project?"</h2>
     <h3> "Why does this even matter??" (And what's the diff between research grade and unverified?)</h3>
 
-<table id="buttons">
+   
+
+    <table id="buttons">
     <tr>
         <th>Common Species</th>
         <th>Rare Species</th>
         <th>Invasive Species</th>
     </tr>
+
     <tr>
-    <td><div id="common1" class="button">  <img src="./icons/bud.png">Eastern Redbud</div></td>
-       <td><div id="rare1" class="button"><img src="./icons/thistle.png">Carolina Thistle</div></td>
-    <td><div id="invasive1" class="button">  <a href="./wisteria1.html"><img src="./icons/wisteria.png"></a>Chinese Wisteria</div></td>  
+    <td><div id="common1" class="button"> <a href="redbud1.html"> <img class="icon" src="./icons/bud.png"></a>Eastern Redbud</div></td>
+       <td><div id="rare1" class="button"><a href="thistle1.html"><img class="icon" src="./icons/thistle.png"></a>Carolina Thistle</div></td>
+    <td><div id="invasive1" class="button">  <a href="./wisteria1.html"><img class="icon" src="./icons/wisteria.png"></a>Chinese Wisteria</div></td>  
 </tr>
 <tr>
-<td><div id="common2" class="button">  <img src="./icons/Laurel.png">Mountain Laurel</div></td>
+<td><div id="common2" class="button"> <a href="./laurel1.html"><img class="icon" src="./icons/Laurel.png"></a>Mountain Laurel</div></td>
  
 
-    <td><div id="rare2" class="button"><img src="./icons/magnolia.png">Bigleaf Magnolia</div></td>
+    <td><div id="rare2" class="button"><a href="magnolia1.html"><img class="icon" src="./icons/magnolia.png"></a>Bigleaf Magnolia</div></td>
 
 
-    <td><div id="invasive2" class="button"><img src="./icons/privet.png">Chinese Privet</div></td>
+    <td><div id="invasive2" class="button"><a href="pear1.html"><img class="icon" src="./icons/pear.png"></a>Bradford  </br> Pear</div></td>
 </tr>
 </table>
 

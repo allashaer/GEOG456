@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>redbud</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+    <script src="./data/redbud.js"></script>
+
+ <style>
+        #map {
+          width: 95%;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+        
+        h1{
+            text-align: center;
+
+        }
+        h2{
+            text-align: center;
+        }
+        body { background-color: honeydew;
+
+        }
+ #myRange {
+ -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  border-radius: 10px;
+  background: lavender;
+  outline: none;
+  opacity: .9;
+  -webkit-transition: .2s;
+  transition: opacity .2s ease-in;
+}
+
+#myRange::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px; 
+  background: url(./icons/w50.png);
+  cursor: pointer;
+}
+#slider{
+        margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+#myRange::-moz-range-thumb {
+width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: url(./icons/w50.png);
+  cursor: pointer;
+}
+.icon {
+    width: 50px;
+    height: 50px;
+     margin:10px;
+ 
+}
+        .button {
+            background-color: lavender;
+  border: none;
+  color: black;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  cursor:pointer;
+  border-radius: 12px;
+  width: 100px;
+  height: 120px;
+        }
+      #research{
+        margin-left: auto;
+        margin-right: auto;
+        float:right;
+        height: auto;
+        width:300px;
+      } 
+       #home{
+
+  margin-left: auto;
+        margin-right: auto;
+        height: auto;
+      background-image: url(./icons/leaves.png);
+  background-size: cover;
+}
+.head{
+    width: 50%;
+    margin-left: auto;
+  margin-right: auto;
+  height: 50px;
+  margin-top: auto;
+}
+.type{
+     color:indianred
+}
+    </style>
+</head>
+
+<body>
+
+   
+
+
+<div id="home" class="button"><a href="./homePage.html"><img class= "icon" src="./icons/home.png"></a>Return</div><div id="research" class="button"> <a href="./redbud2.html"><img class="icon" src="./icons/research.png"></a></br>Show Verified Observations</div>
+<h1 class="head">Redbud</h1> 
+<h2>"Description"</h2>
+<h2 class="type">Observation Type: Needs ID</h2>
+<h2 id="theYearID"></h2>
+<div id="slider"><input id="myRange" type="range" name="year" value="0" min="0" max="10" oninput="moveSlider(this.value)"></div>
+
+ </br>
+
+
+
+<br>
+
+     <div id="map"></div>
+
+     <script>
+
+
+const first = [];
+const second = [];
+const third = [];
+const fourth = [];
+const fifth = [];
+const sixth = [];
+const seventh = [];
+const eigth = [];
+const ninth = [];
+const tenth = [];
+const eleventh = [];
+const initialLength =  redbud.features.length; 
+
+
+ 
+for (let i = 0; i < initialLength; i++) { 
+  if (redbud.features[i].properties.observed_on <= 2015 && redbud.features[i].properties.quality_grade == "needs_id") first.push(redbud.features[i]); // Add a new element
+if (redbud.features[i].properties.observed_on <= 2016 && redbud.features[i].properties.quality_grade == "needs_id") second.push(redbud.features[i]);
+ if (redbud.features[i].properties.observed_on <= 2017 && redbud.features[i].properties.quality_grade == "needs_id") third.push(redbud.features[i]) ;
+     if (redbud.features[i].properties.observed_on <= 2018 && redbud.features[i].properties.quality_grade == "needs_id") fourth.push(redbud.features[i]);
+   if (redbud.features[i].properties.observed_on <= 2019 && redbud.features[i].properties.quality_grade == "needs_id") fifth.push(redbud.features[i]);
+   if (redbud.features[i].properties.observed_on <= 2020 && redbud.features[i].properties.quality_grade == "needs_id") sixth.push(redbud.features[i]);
+    if (redbud.features[i].properties.observed_on <= 2021 && redbud.features[i].properties.quality_grade == "needs_id") seventh.push(redbud.features[i]);
+    if (redbud.features[i].properties.observed_on <= 2022 && redbud.features[i].properties.quality_grade == "needs_id") eigth.push(redbud.features[i]);
+    if (redbud.features[i].properties.observed_on <= 2023 && redbud.features[i].properties.quality_grade == "needs_id") ninth.push(redbud.features[i]);
+     if (redbud.features[i].properties.observed_on <= 2024 && redbud.features[i].properties.quality_grade == "needs_id") tenth.push(redbud.features[i]);
+   if (redbud.features[i].properties.observed_on <= 2025 && redbud.features[i].properties.quality_grade == "needs_id") eleventh.push(redbud.features[i]);
+
+};
+
+
+    var map = L.map('map').setView([35.08395557927643, -78.96424437476544],7 );
+        
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+}).addTo(map);
+
+
+var Icon_w = L.icon({
+    iconUrl: './icons/bud.png',
+  
+
+    iconSize:     [50, 50], // size of the icon
+  
+    iconAnchor:   [10, 10], // point of the icon which will correspond to marker's location
+   
+});
+
+
+     var myData = [first, second, third, fourth, fifth, sixth, seventh, eigth, ninth, tenth, eleventh] // array ordering the data 
+     var order = ['2015','2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'] // an array with the date of each data source
+     var points = L.geoJSON(myData[0],{
+            pointToLayer: function(feature,latlng){
+                return L.marker(latlng, {icon: Icon_w})
+            }
+        }).addTo(map); // open the first element of the myData array
+
+     function moveSlider(value){  // function called by the slider, with the value parameter: the value goes from 0 to 2
+        var year = myData[value] // get the data based on the slider value
+        map.removeLayer(points);// leaflet method to remove a layer 
+        // custom icon doesn't work...
+        points = L.geoJSON(year, {
+            pointToLayer: function(feature, latlng) {
+                var myMarker = L.marker(latlng, {
+                    icon : Icon_w
+                });
+                return myMarker;
+            }
+        }).addTo(map); // add the new layer
+        document.getElementById('theYearID').innerHTML = "Year:" + " " + order[value] + " "  + " " + "Total Observations: " +  year.length// change the text above the slider
+    };
+     moveSlider(0);
+    window.onload = function() {
+        document.getElementById('myRange').value = 0;  
+    };
+
+
+</script>
+</body>
+</html>
