@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll</title>
+</head>
+<style>
+    body{
+        background-color: lavender;
+        font-size:20px;
+        height:100vh;
+        overflow: hidden;
+    
+        
+    }
+    .grid{
+    background-color: honeydew;
+    margin-right:auto;
+    
+}
+    div#image_container{
+        width: 100%;
+        max-width: 600px;
+        height: 75vh;
+        position: fixed;
+        top: 80px;
+        
+    }
+    img{
+        width: 100%;
+        position: absolute;
+    }
+
+    #before{
+        z-index: 1;
+        opacity: 1;
+    }
+    #middle{
+         z-index: 2;
+        opacity: 1;
+    }
+    #after{
+        z-index: 3;
+        opacity: 0;
+    }
+#myText{
+
+    display: grid;
+    width: 100vw;
+    max-width: 600px;
+    height: 25vh;
+    top: calc(75vh + 5px);;
+
+    grid-template-rows: 100%;
+    background-color: honeydew;
+    position: fixed;
+    overflow-y:scroll;
+
+}
+
+#myP{
+    top:0;
+    position: fixed;
+
+}
+
+h1{
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+h3{
+    text-align: center;
+}
+</style>
+<body> 
+    <p id="myP" style="position:fixed">
+        Scroll to see changes
+ <h1>Downtown Durham, NC</h1>
+    <div class="grid"> <h2>Aerial changes displayed from 2010-2022</h2>
+<h3>From 2010 to 2016, the Durham County Courthouse seen in the top left has completed construction. The car dealership at the bottom is in the process of being redeveloped. The Durham Country Department of Public Health seen in the top right has been redeveloped. From 2016 to 2022, the development project to turn the previous car dealership into luxury condos and apartments is completed. In 2022, the surface lot on the left is in the process of being redeveloped.</h3>
+  </div>
+</p> <br>
+   
+    <div id="image_container">
+        <img id="before"  src="./2010a.png" alt="">
+        <img id="middle" src="./2016a.png" alt="">
+        <img id="after" src="./2022a.png" alt="">
+
+    </div>
+    <div id="myText">
+    <div id="yBefore">
+        <h1>2010</h1>
+      
+    </div>
+     <div id="yMiddle">
+        <h1>2016</h1>
+     </div>   
+    <div id="yAfter">
+        <h1>2022</h1>
+    
+       
+    </div>
+    </div>
+<script>
+
+ var maxY = document.getElementById('myText').scrollHeight - document.getElementById('myText').clientHeight;
+
+
+ 
+
+    document.getElementById('myText').onscroll = function() {myFunction()}; // when you scroll the myFunction will be called. 
+    function myFunction() {
+    var opacity = document.getElementById('myText').scrollTop / maxY;
+    document.getElementById('after').style.opacity = opacity;
+    
+}
+    
+function replaceTop(){
+
+}
+       window.addEventListener('resize', function() {
+        replaceTop()
+        maxY = document.getElementById('myText').scrollHeight - document.getElementById('myText').clientHeight;
+        })
+
+        // Trigger the resize event to initially set the width
+        window.dispatchEvent(new Event('resize'));
+
+        window.onload = function() {replaceTop()}
+
+    </script>
+</body>
+</html>

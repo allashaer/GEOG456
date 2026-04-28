@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click</title>
+    <style>
+        #container{
+            margin-left: auto;
+  margin-right: auto;
+        }
+       img{
+            position: absolute;
+             margin-left: auto;
+  margin-right: auto;
+  width:800px
+        }
+
+        .visible {
+            visibility: visible;
+             
+        }
+
+        .hidden {
+            visibility: hidden;
+               
+        }
+        .middle{
+              visibility: hidden;
+              
+
+        }
+        body{
+    background-color: lavender;
+}
+.grid{
+    background-color: honeydew;
+    
+}
+h1{
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+h3{
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+        <h1>Downtown Durham, NC</h1>
+    <div class="grid"> <h2>Aerial changes displayed from 2010-2022</h2>
+<h3>From 2010 to 2016, the Durham County Courthouse seen in the top left has completed construction. The car dealership at the bottom is in the process of being redeveloped. The Durham Country Department of Public Health seen in the top right has been redeveloped. From 2016 to 2022, the development project to turn the previous car dealership into luxury condos and apartments is completed. In 2022, the surface lot on the left is in the process of being redeveloped.</h3>
+  </div>
+  <div id="container" onclick="myFunction()"> 
+   <img class="visible" src="./2010a.png" alt="Downtown Durham 2010">
+    <img class="middle" src="./2016a.png" alt="Downtown Durham 2016">
+    <img class="hidden" src="./2022a.png" alt="Downtown Durham 2022">
+  </div>
+   <script>
+
+        function myFunction(){
+            visibleImgs = document.querySelector('.visible') // gets the img that is visible and saves it in a variable named visibleImgs
+            middleImgs = document.querySelector('.middle').className = 'visible' // gets the img whose class is hidden and makes it class visible
+            hiddenImgs = document.querySelector('.hidden').className = 'middle' // gets the img whose class is hidden and makes it class visible
+            visibleImgs.className = 'hidden' // makes the img that was class visible, class hidden
+        }
+    </script>
+</body>
+</html>
